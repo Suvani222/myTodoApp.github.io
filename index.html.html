@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        .container {
+            display: inline-block;
+            align-items: center;
+            padding-left: 500px;
+            padding-right: 400px;
+        }
+
+        .para {
+
+            font-size: larger;
+            font-family: 'Courier New', Courier, monospace;
+            color: brown;
+            text-align: center;
+            font-weight: bolder;
+
+        }
+
+        .box {
+            border: 3px solid brown;
+            margin: 10px;
+            height: 200px;
+            align-items: center;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="para"> TODO-LIST</p>
+    <div class="container">
+        <input type="text" id="inputField"> <button id="btn">ADD</button>
+
+        <div class="box" id="list">
+
+        </div>
+
+
+    </div>
+    <script>
+        var inputField = document.getElementById('inputField');
+
+        var list = document.getElementById('list');
+        var btn = document.getElementById('btn');
+
+        btn.addEventListener('click', function () {
+            var taskDescription = inputField.value;
+
+            if (taskDescription.trim() === '') {
+                // If the task description is empty, display an error message or take appropriate action
+                return;
+            }
+
+            // Create a new div element for the task
+
+
+            var taskElement = document.createElement('li');
+            taskElement.textContent = taskDescription;
+
+            var removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', function () {
+                list.removeChild(taskElement);
+            });
+
+            taskElement.appendChild(removeButton);
+            // Append the task element to the task list
+            list.appendChild(taskElement);
+
+            // Clear the input field after adding the task
+            inputField.value = '';
+
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>
